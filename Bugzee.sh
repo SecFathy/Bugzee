@@ -73,6 +73,7 @@ printf "\x1b[32m ---> [ Fingerprinting Tools    ]\\x1b[0m\n";
 
 git clone https://github.com/urbanadventurer/whatweb.git
 git clone https://github.com/EnableSecurity/wafw00f.git
+git clone https://github.com/daudmalik06/ReconCat.git 
 
 printf "\x1b[32m ---> [ Web Application vulnerability Scanner   ]\\x1b[0m\n";
 
@@ -84,3 +85,4 @@ git clone https://github.com/wpscanteam/wpscan.git
 git clone https://github.com/rezasp/joomscan.git
 git clone https://github.com/Dionach/CMSmap.git
 git clone https://github.com/internetwache/GitTools.git
+git clone https://github.com/epinna/weevely3.git
