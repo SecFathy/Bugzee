@@ -2,7 +2,7 @@
 
 Simple Script to install recommended Bug Bounty Hunting Tools In Your Linux distributions
 
-#Tools 
+# Tools 
 
 1 - a2sv
 
