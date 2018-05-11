@@ -1,3 +1,6 @@
+![alt text](https://i.imgur.com/khyCWw9.png "BugZee")
+
+
 ## bugzee
 
 Simple Script to install recommended Bug Bounty Hunting Tools In Your Linux distributions
