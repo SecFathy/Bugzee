@@ -2,8 +2,7 @@
 # Bug Hunter 101 Tools
 # Developed By SecFathy
 
-# Check Root Pravilage
-
+# Check Root Privileges
 if [[ $EUID -ne 0 ]]; then
   echo "You must be a root user" 2>&1
   exit 1
@@ -45,11 +44,15 @@ sudo apt-get install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ru
 printf "\x1b[32m ---> [ Install SSL Testing Tools   ]\\x1b[0m\n";
 
 git clone https://github.com/hahwul/a2sv.git
+cd a2sv
+pip install -r requirements.txt
+cd ..
 
 printf "\x1b[32m ---> [ Install Port Scan   ]\\x1b[0m\n";
 
 apt-get install nmap
 git clone https://github.com/robertdavidgraham/masscan
+
 
 printf "\x1b[32m ---> [ Install DNS Discovery & Sub-domain   ]\\x1b[0m\n";
 
@@ -71,7 +74,7 @@ printf "\x1b[32m ---> [ Fingerprinting Tools    ]\\x1b[0m\n";
 
 git clone https://github.com/urbanadventurer/whatweb.git
 git clone https://github.com/EnableSecurity/wafw00f.git
-git clone https://github.com/daudmalik06/ReconCat.git 
+git clone https://github.com/daudmalik06/ReconCat.git
 
 printf "\x1b[32m ---> [ Web Application vulnerability Scanner   ]\\x1b[0m\n";
 
