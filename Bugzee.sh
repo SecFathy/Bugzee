@@ -5,7 +5,10 @@
 # Check Root Privileges
 if [[ $EUID -ne 0 ]];
 then
-    echo Type Your sudo password To using Script :
+    echo
+    echo "                       Hi $USER"
+    echo
+    echo "          Type Your sudo password To using Script  "
     echo
     exec sudo /bin/bash "$0" "$@"
 fi
