@@ -49,7 +49,7 @@ Simple Script to install recommended Bug Bounty Hunting Tools In Your Linux dist
 
 # Installing
 
-We recommend Install any penetration testing distributions Like [ Backbox , Kali Linux ] .
+Bugzee is  Cross-Platform Script For different Linux Distro
 
 git clone https://github.com/SecFathy/Bugzee.git 
 
