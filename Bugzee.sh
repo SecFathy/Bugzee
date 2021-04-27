@@ -3,13 +3,15 @@
 # Developed By SecFathy
 
 # Check Root Privileges
-if [[ $EUID -ne 0 ]]; then
-  echo "You must be a root user" 2>&1
-  exit 1
-else
-  mount /dev/sdb1 /mnt/disk2
+if [[ $EUID -ne 0 ]];
+then
+    echo
+    echo "                       Hi $USER"
+    echo
+    echo "          Type Your sudo password To using Script  "
+    echo
+    exec sudo /bin/bash "$0" "$@"
 fi
-
 
 echo '''
 
@@ -26,21 +28,48 @@ echo '''
     Developed By SecFathy @Sirmatrixpage
 '''
 
+###### To update any Linux Distro
+######################################################################################################################################################
+declare -A osInfo;
+osInfo[/etc/debian_version]="sudo apt-get update -y && sudo apt-get upgrade -y"
+osInfo[/etc/alpine-release]="sudo apk update"
+osInfo[/etc/centos-release]="sudo yum update && sudo yum upgrade"
+osInfo[/etc/fedora-release]="sudo dnf update && sudo dnf upgrade"
+osInfo[/etc/arch-release]="sudo pacman -Syu"
+osInfo[/etc/manjaro-release]="sudo pacman -Syu"
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        SYSUPDATE=${osInfo[$f]}
+    fi
+done
 
 printf "\x1b[32m ---> [ Update Your Linux Distro ]\\x1b[0m\n";
-apt-get update
-apt-get upgrade
+${SYSUPDATE}
+
+#########./
+###### To install Tools in any Linux Distro
+##############################################################################
+declare -A osInfo;
+osInfo[/etc/debian_version]="sudo apt-get install -y"
+osInfo[/etc/alpine-release]="sudo apk --update add"
+osInfo[/etc/centos-release]="sudo yum install -y"
+osInfo[/etc/fedora-release]="sudo dnf install -y"
+osInfo[/etc/arch-release]="sudo pacman -S"
+osInfo[/etc/manjaro-release]="sudo pacman -S"
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        package_manager=${osInfo[$f]}
+    fi
+done
+
 
 printf "\x1b[32m ---> [ Install Requirements  ]\\x1b[0m\n";
-sudo apt-get install -y git
-apt-get install python-pip
-sudo apt-get install -y python3-pip
-sudo apt-get install -y libcurl4-openssl-dev
-sudo apt-get install -y libssl-dev
-sudo apt-get install -y jq
-sudo apt-get install -y ruby-full
-sudo apt-get install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev
+package="git python-pip python3-pip libcurl4-openssl-dev libssl-dev jq ruby-full libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev"
+${package_manager} ${package}
 
+####################./
 printf "\x1b[32m ---> [ Install SSL Testing Tools   ]\\x1b[0m\n";
 
 git clone https://github.com/hahwul/a2sv.git
@@ -49,8 +78,7 @@ pip install -r requirements.txt
 cd ..
 
 printf "\x1b[32m ---> [ Install Port Scan   ]\\x1b[0m\n";
-
-apt-get install nmap
+${package_manager} nmap
 git clone https://github.com/robertdavidgraham/masscan
 
 
